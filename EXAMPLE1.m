@@ -1,6 +1,6 @@
 %% Solving x^2 - 2x + 1 = 0 using fixed point iteration
 
-%% TASK: Change the initial condition x0 and observe the reult given by
+%% TASK: Change the initial condition x0 and observe the result given by
 %% each method. Find the range of initial conditions for which the
 %% convergence happens. 
 
@@ -110,3 +110,4 @@ plot(0:(length(X4)-1),X4,'b.-')
 xlabel('Iteration Number (k)')
 ylabel('x_k')
 grid on
+ylim([-0.5 2.5])
