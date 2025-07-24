@@ -19,7 +19,11 @@ Df = @(x,y) [(2*R(1,1)*x + (R(1,2) + R(2,1))*y - 2*p(1,1));
 %% Analysis of R matrix
 eigenvalues = eig(R);
 fprintf('Eigenvalues of R: %.4f, %.4f\n', eigenvalues(1), eigenvalues(2));
-fprintf('R is positive definite: %s\n', all(eigenvalues > 0));
+fprintf('R is positive definite: %s\n', string(all(eigenvalues > 0)));
+
+[eigenvectors, eigenvals_matrix] = eig(R);
+fprintf('Eigenvectors of R (columns):\n');
+disp(eigenvectors);
 
 % Optimal solution
 w_star = R \ p;
@@ -29,7 +33,7 @@ fprintf('Minimum function value: %.4f\n\n', f(w_star(1), w_star(2)));
 %% Parameters
 MaxIter = 1000;
 EPS = 1e-3;
-initial_condition = [3; 3]; % Initial condition
+initial_condition = [2; -1]; % Initial condition
 
 % Different step sizes to test
 step_sizes = [-0.01, 0, 0.01, 0.1, 0.19, 0.20, 0.21];
@@ -158,7 +162,7 @@ for idx = 1:length(step_sizes)
     end
     mu_str = strrep(mu_str, '.', '_');
     
-    filename = sprintf('Answer_1_c_Fig_MU_%s.png', mu_str);
+    filename = sprintf('Answer_1_c2_Fig_MU_%s.png', mu_str);
     print(filename, '-dpng', '-r300');
     fprintf('  Saved: %s\n\n', filename);
     
@@ -186,4 +190,3 @@ fprintf('For fastest convergence: μ ≈ 2/(λ_max + λ_min) = %.4f\n', ...
         2/(max(eigenvalues) + min(eigenvalues)));
 
 fprintf('\nAnalysis complete! Figures saved with naming convention: Answer_1_c_Fig_MU_xx.png\n');
-
