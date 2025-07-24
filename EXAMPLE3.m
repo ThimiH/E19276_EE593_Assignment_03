@@ -35,7 +35,7 @@ xp = [inf ; inf] ;
 
 X = x ;
 
-Mu = 0.01 ; % Step size parameter
+Mu = 0.19 ; % Step size parameter
 
 I = 0 ;
 
